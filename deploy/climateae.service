@@ -1,0 +1,14 @@
+[Unit]
+Description=ClimateAE UAE Federal Climate Law (11/2024), EAD MRV (03/2026) & NRCC (67/2024) Auditor
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/climateae
+EnvironmentFile=/etc/climateae/.env
+ExecStart=/usr/bin/node --no-warnings /opt/climateae/server/index.mjs
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=default.target

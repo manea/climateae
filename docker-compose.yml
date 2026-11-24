@@ -1,0 +1,20 @@
+services:
+  climateae:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: climateae
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:4229:4229"
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      PORT: 4229
+      CLIMATEAE_DATA_DIR: /app/data
+      BASE_PATH: ${BASE_PATH:-}
+    volumes:
+      - climateae_data:/app/data
+
+volumes:
+  climateae_data:
